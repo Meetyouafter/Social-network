@@ -1,29 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import "../App.css";
+import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
-      <nav className="sidebar">
+      <nav className={styles.sidebar}>
         <div>
-          <a href="#">Profile</a>
+          <a className={styles.item} href="#">Profile</a>
         </div>
         <div>
-          <a href="#">Message</a>
+          <a className={styles.item} href="#">Message</a>
         </div>
         <div>
-          <a href="#">News</a>
+          <a className={styles.item} href="#">News</a>
         </div>
         <div>
-          <a href="#">Music</a>
+          <a className={styles.item} href="#">Music</a>
         </div>
         <div>
-          <a href="#">Setting</a>
+          <a className={styles.item} href="#">Setting</a>
         </div>
-      </nav>{" "}
-    </div>
-  );
+      </nav>  
+      );
 };
 
 export default Sidebar;

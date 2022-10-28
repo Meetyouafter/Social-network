@@ -16,31 +16,7 @@
   width: 1200px;
 }
 
-.header{
-  background-color: blue;
-  grid-area: header;
-  border: 2px solid black;
-}
 
-.footer {
-  background-color: brown;
-  border: 2px solid black;
-  grid-area: footer;
-}
 
-.body {
-  background-color: green;
-  border: 2px solid black;
-  grid-area: body;
-}
 
-.sidebar {
-  background-color: yellow;
-  border: 2px solid black;
-  grid-area: sidebar;
-}
 
-.header img {
-  height: 40px;
-  width: 40px;
-}
