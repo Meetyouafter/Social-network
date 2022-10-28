@@ -1,10 +1,16 @@
 import './App.css';
-import FinallyForm from './Components/FinallyForm';
+import Body from './Components/Body';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
+import Sidebar from './Components/Sidebar';
 
 function App() {
   return (
-    <div className="App">
-      <FinallyForm />
+    <div className="container">
+      <Header />
+      <Sidebar />
+      <Body />
+      <Footer />
     </div>
   );
 }
