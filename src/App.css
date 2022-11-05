@@ -11,8 +11,8 @@
   'sidebar body'
   'footer footer';
   grid-gap: 20px;
-  grid-template-rows: 80px 1fr;
-  grid-template-columns: 50px 10fr;
+  grid-template-rows: 80px 1fr 80px;
+  grid-template-columns: 150px 10fr;
   width: 1200px;
 }
 

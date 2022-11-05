@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import styles from "./Body.module.css";
+import Posts from "./Posts/Posts";
 
 const Body = () => {
   return (
@@ -11,10 +12,7 @@ const Body = () => {
           My post
           <div>New Post</div>
           <div>
-            <div className={styles.post}>Post 1</div>
-            <div className={styles.post}>Post 2</div>
-            <div className={styles.post}>Post 3</div>
-            <div className={styles.post}>Post 4</div>
+            <Posts />
           </div>
         </div>
       </main>
