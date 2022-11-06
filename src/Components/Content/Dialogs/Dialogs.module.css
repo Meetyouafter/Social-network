@@ -1,0 +1,19 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 100px 300px;
+}
+
+.users {
+    padding: 10px;
+    background-color: blueviolet;
+}
+
+.dialog {
+    font-size: 20px;
+    color: aqua;
+}
+
+.message {
+    padding: 15px;
+    font-size: 25px;
+}

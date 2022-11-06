@@ -1,9 +1,17 @@
 .sidebar {
     background-color: yellow;
-    border: 2px solid black;
+    border: 2px solid gray;
     grid-area: sidebar;
+    font-size: 25px;
 }
 
-.items {
-    color: pink;
+a {
+    color: green;
+    text-decoration: none;
+
 }
+
+.active {
+    color: red;
+}
+

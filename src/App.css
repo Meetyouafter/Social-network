@@ -16,6 +16,11 @@
   width: 1200px;
 }
 
+.content_container {
+    background-color: green;
+    border: 2px solid black;
+    grid-area: body;
+}
 
 
 
