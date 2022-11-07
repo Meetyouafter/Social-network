@@ -5,11 +5,11 @@ import styles from './Sidebar.module.css';
 
 const changeActiveClass = ({ isActive }) => (isActive ? styles.active : '')
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <nav className={styles.sidebar}>
       <div>
-        <NavLink to={'/'} className={changeActiveClass}
+        <NavLink to={'/home'} className={changeActiveClass}
             >
           Profile
         </NavLink>
@@ -34,8 +34,13 @@ const Sidebar = () => {
           Setting
         </NavLink>
       </div>
+    {props.state.friends.map((friend) => {
+    return <div key={friend.id} className={styles.friends}>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSnsq7RuoVd3kidDzeFLnPFABR_z8Qu9hMDg&usqp=CAU" alt="img" />
+      {friend.name}
+      </div>})}
     </nav>
-  );
+    );
 };
 
 export default Sidebar;

@@ -12,7 +12,10 @@ const UserInfo = () => {
   );
 };
 
-const Home = () => {
+const Home = (props) => {
+if (!props.state) {
+  return
+}
   return (
     <main className={styles.body}>
       <UserInfo />
@@ -20,7 +23,7 @@ const Home = () => {
         My post
         <div>New Post</div>
         <div>
-          <Posts />
+          <Posts posts={props.state.posts}/>
         </div>
       </div>
     </main>

@@ -1,9 +1,9 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 100px 300px;
+    grid-template-columns: 150px 300px;
 }
 
-.users {
+.user {
     padding: 10px;
     background-color: blueviolet;
 }
