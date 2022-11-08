@@ -34,7 +34,7 @@ const Sidebar = (props) => {
           Setting
         </NavLink>
       </div>
-    {props.state.friends.map((friend) => {
+    {props.sidebar.friends.map((friend) => {
     return <div key={friend.id} className={styles.friends}>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSnsq7RuoVd3kidDzeFLnPFABR_z8Qu9hMDg&usqp=CAU" alt="img" />
       {friend.name}

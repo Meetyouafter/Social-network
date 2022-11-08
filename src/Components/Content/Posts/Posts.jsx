@@ -1,7 +1,6 @@
+import { uniqueId } from 'lodash';
 import React from 'react';
 import styles from './Posts.module.css';
-
-
 
 const Post = (props) => {
     return (
@@ -18,13 +17,28 @@ const Post = (props) => {
 };
 
 const Posts = (props) => {
-  console.log(props)
+  console.log(props, 'post')
+
+const newPostElement = React.createRef();
+
+  const addPost = () => {
+    const text = newPostElement.current.value;
+    props.addNewPost(text)
+    props.updateNewPost('')
+  }
+
+  const onPostChange = () => {
+    const text = newPostElement.current.value;
+    props.updateNewPost(text)
+
+  }
+
   return (
     <div className={styles.container}>
       My post
-      <textarea></textarea>
-      <button>Add new Post</button>
-      {props.posts.map((post) => <Post post={post}/>)}
+      <textarea ref={newPostElement} onChange={onPostChange} value={props.newPost}></textarea>
+      <button onClick={addPost}>Add new Post</button>
+      {props.posts.map((post) => <Post post={post} key={uniqueId()}/>)}
     </div>
   );
 };
