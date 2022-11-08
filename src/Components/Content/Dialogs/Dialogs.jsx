@@ -23,13 +23,29 @@ return <div className={styles.message}>
 }
 
 const Dialogs = (props) => {
+console.log(props)
+  const newMessageElement = React.createRef();
+
+  const addMessage = () => {
+    const text = newMessageElement.current.value;
+    props.addNewMessage(text)
+  }
+
+  const onMessageChange = () => {
+    const text = newMessageElement.current.value;
+    props.updateNewMessage(text);
+  }
+
   return (
     <div className={styles.dialogs}>
       <div className={styles.user}>
-        {props.state.users.map(user => <User key={uniqueId()} user={user}/>)}
+        {props.dialogsPage.users.map(user => <User key={uniqueId()} user={user}/>)}
       </div>
       <div className={styles.messages}>
-        {props.state.dialogs.map(dialog => <Message key={uniqueId()} message={dialog.message} />)}
+        {props.dialogsPage.dialogs.map(dialog => <Message key={uniqueId()} message={dialog.message} />)}
+      
+      <textarea onChange={onMessageChange} ref={newMessageElement} value={props.dialogsPage.newMessage}/>
+      <button onClick={addMessage}>Send new message</button>
       </div>
     </div>
   );

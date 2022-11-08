@@ -1,11 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
 import state from './Components/Redux/state';
+import getTreeOfApp from './render';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <>
-    <App state={state}/>
-  </>
-);
+getTreeOfApp(state);
