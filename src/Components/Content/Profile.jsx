@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import styles from './Home.module.css';
+import styles from './Profile.module.css';
 import Posts from './Posts/Posts';
 
 const UserInfo = () => {
@@ -12,10 +12,11 @@ const UserInfo = () => {
   );
 };
 
-const Home = (props) => {
-if (!props.state) {
+const Profile = (props) => {
+if (!props.postsPage) {
   return
 }
+
   return (
     <main className={styles.body}>
       <UserInfo />
@@ -23,11 +24,16 @@ if (!props.state) {
         My post
         <div>New Post</div>
         <div>
-          <Posts posts={props.state.posts}/>
+          <Posts 
+          posts={props.postsPage.posts}
+          newPost={props.postsPage.newPost}
+          addNewPost={props.addNewPost}
+          updateNewPost={props.updateNewPost}
+/>
         </div>
       </div>
     </main>
   );
 };
 
-export default Home;
+export default Profile;

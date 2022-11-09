@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './Posts.module.css';
 
-
-
 const Post = (props) => {
     return (
       <div className={styles.post}>
@@ -18,13 +16,26 @@ const Post = (props) => {
 };
 
 const Posts = (props) => {
+  const newPostElement = React.createRef();
+
+  const createNewPost = () => {
+    const text = newPostElement.current.value;
+    props.addNewPost(text);
+  }
+
+  const updateNewPost = () => {
+    const text = newPostElement.current.value;
+    props.updateNewPost(text);
+  }
+
   console.log(props)
   return (
     <div className={styles.container}>
       My post
-      <textarea></textarea>
-      <button>Add new Post</button>
       {props.posts.map((post) => <Post post={post}/>)}
+      <textarea onChange={updateNewPost} value={props.newPost} ref={newPostElement}></textarea>
+      <button onClick={createNewPost}>Add new Post</button>
+      
     </div>
   );
 };

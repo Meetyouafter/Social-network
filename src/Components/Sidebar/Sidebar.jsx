@@ -9,8 +9,12 @@ const Sidebar = (props) => {
   return (
     <nav className={styles.sidebar}>
       <div>
-        <NavLink to={'/home'} className={changeActiveClass}
-            >
+        <NavLink to={'/'} className={changeActiveClass}>
+          Home
+        </NavLink>
+      </div>
+      <div>
+        <NavLink to={'/profile'} className={changeActiveClass}>
           Profile
         </NavLink>
       </div>
