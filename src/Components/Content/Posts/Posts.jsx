@@ -19,16 +19,14 @@ const Posts = (props) => {
   const newPostElement = React.createRef();
 
   const createNewPost = () => {
-    const text = newPostElement.current.value;
-    props.addNewPost(text);
+    props.dispatch({ type: 'ADD_NEW_POST' });
   }
 
   const updateNewPost = () => {
     const text = newPostElement.current.value;
-    props.updateNewPost(text);
+    props.dispatch({ type: 'UPDATE_NEW_POST', text: text });
   }
 
-  console.log(props)
   return (
     <div className={styles.container}>
       My post

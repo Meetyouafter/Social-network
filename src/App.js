@@ -11,7 +11,6 @@ import Profile from './Components/Content/Profile';
 import Music from './Components/Content/Music/Music';
 
 const App = (props) => {
-  console.log(props);
   return (
     <BrowserRouter>
       <div className='container'>
@@ -25,8 +24,7 @@ const App = (props) => {
               element={
                 <Profile
                   postsPage={props.store.getPostsPage()}
-                  addNewPost={props.addNewPost}
-                  updateNewPost={props.updateNewPost}
+                  dispatch={props.dispatch}
                 />
               }
             />
@@ -35,8 +33,7 @@ const App = (props) => {
               element={
                 <Dialogs
                   dialogsPage={props.store.getDialogsPage()}
-                  addNewMessage={props.addNewMessage}
-                  updateNewMessage={props.updateNewMessage}
+                  dispatch={props.dispatch}
                 />
               }
             />

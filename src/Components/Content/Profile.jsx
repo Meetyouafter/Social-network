@@ -27,8 +27,7 @@ if (!props.postsPage) {
           <Posts 
           posts={props.postsPage.posts}
           newPost={props.postsPage.newPost}
-          addNewPost={props.addNewPost}
-          updateNewPost={props.updateNewPost}
+          dispatch={props.dispatch}
 />
         </div>
       </div>

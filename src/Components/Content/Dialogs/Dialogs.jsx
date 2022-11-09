@@ -23,17 +23,15 @@ return <div className={styles.message}>
 }
 
 const Dialogs = (props) => {
-console.log(props)
   const newMessageElement = React.createRef();
 
   const addMessage = () => {
-    const text = newMessageElement.current.value;
-    props.addNewMessage(text)
+    props.dispatch({ type: 'ADD_NEW_MESSAGE' })
   }
 
   const onMessageChange = () => {
     const text = newMessageElement.current.value;
-    props.updateNewMessage(text);
+    props.dispatch({ type: 'UPDATE_NEW_MESSAGE', text: text })
   }
 
   return (

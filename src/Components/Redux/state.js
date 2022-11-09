@@ -64,20 +64,11 @@ const store = {
       ],
     },
   },
-  getSidebar() {
-    return this._state.sidebar;
-  },
-  getDialogsPage() {
-    return this._state.dialogsPage;
-  },
-  getPostsPage() {
-    return this._state.postsPage;
-  },
-  updateNewMessage(text) {
+    _updateNewMessage(text) {
     this.getDialogsPage().newMessage = text;
     alertSubscribed(store);
   },
-  addNewMessage() {
+  _addNewMessage() {
     const newMessage = {
       id: 10,
       message: this.getDialogsPage().newMessage,
@@ -86,11 +77,11 @@ const store = {
     this.getDialogsPage().newMessage = '';
     alertSubscribed(store);
   },
-  updateNewPost(text) {
+  _updateNewPost(text) {
     this.getPostsPage().newPost = text;
     alertSubscribed(store);
   },
-  addNewPost() {
+  _addNewPost() {
     const newPost = {
       id: 10,
       likes: 0,
@@ -100,10 +91,32 @@ const store = {
     this.getPostsPage().newPost = '';
     alertSubscribed(store);    
   },
+  getSidebar() {
+    return this._state.sidebar;
+  },
+  getDialogsPage() {
+    return this._state.dialogsPage;
+  },
+  getPostsPage() {
+    return this._state.postsPage;
+  },
+
   subscribe(observer) {
     alertSubscribed = observer;
   },
+  dispatch(action) {
+    if (action.type === 'ADD_NEW_POST') {
+      this._addNewPost();
+    } else if (action.type === 'UPDATE_NEW_POST') {
+      this._updateNewPost(action.text);
+    } else if (action.type === 'ADD_NEW_MESSAGE') {
+      this._addNewMessage();
+    } else if (action.type === 'UPDATE_NEW_MESSAGE') {
+      this._updateNewMessage(action.text);
+    }
+  },
 }
+
 window.store = store;
 
 export default store;
