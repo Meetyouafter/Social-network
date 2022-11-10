@@ -1,3 +1,8 @@
+const ADD_NEW_POST = 'ADD_NEW_POST';
+const UPDATE_NEW_POST = 'UPDATE_NEW_POST';
+const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
+const UPDATE_NEW_MESSAGE = 'UPDATE_NEW_MESSAGE';
+
 let alertSubscribed = () => {
   console.log('State was changed')
 }
@@ -105,17 +110,22 @@ const store = {
     alertSubscribed = observer;
   },
   dispatch(action) {
-    if (action.type === 'ADD_NEW_POST') {
+    if (action.type === ADD_NEW_POST) {
       this._addNewPost();
-    } else if (action.type === 'UPDATE_NEW_POST') {
+    } else if (action.type === UPDATE_NEW_POST) {
       this._updateNewPost(action.text);
-    } else if (action.type === 'ADD_NEW_MESSAGE') {
+    } else if (action.type === ADD_NEW_MESSAGE) {
       this._addNewMessage();
-    } else if (action.type === 'UPDATE_NEW_MESSAGE') {
+    } else if (action.type === UPDATE_NEW_MESSAGE) {
       this._updateNewMessage(action.text);
     }
   },
 }
+
+export const addNewPostActionCreator = () => ({type: ADD_NEW_POST})
+export const updateNewPostActionCreator = (newText) => ({type: UPDATE_NEW_POST, text: newText})
+export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE})
+export const updateNewMessageActionCreator = (newText) => ({type: UPDATE_NEW_MESSAGE, text: newText})
 
 window.store = store;
 

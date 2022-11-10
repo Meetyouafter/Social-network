@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
 import { uniqueId } from 'lodash';
+import { addNewMessageActionCreator, updateNewMessageActionCreator } from '../../Redux/state';
 
 const User = (props) => {
   return (
@@ -26,12 +27,12 @@ const Dialogs = (props) => {
   const newMessageElement = React.createRef();
 
   const addMessage = () => {
-    props.dispatch({ type: 'ADD_NEW_MESSAGE' })
+    props.dispatch(addNewMessageActionCreator())
   }
 
   const onMessageChange = () => {
     const text = newMessageElement.current.value;
-    props.dispatch({ type: 'UPDATE_NEW_MESSAGE', text: text })
+    props.dispatch(updateNewMessageActionCreator(text))
   }
 
   return (
