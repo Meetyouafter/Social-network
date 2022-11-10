@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
 import { uniqueId } from 'lodash';
-import { addNewMessageActionCreator, updateNewMessageActionCreator } from '../../Redux/state';
+import { addNewMessageActionCreator, updateNewMessageActionCreator } from '../../Redux/reducer/dialogsReducer';
 
 const User = (props) => {
   return (

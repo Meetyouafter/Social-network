@@ -1,5 +1,6 @@
+import { uniqueId } from 'lodash';
 import React from 'react';
-import { addNewPostActionCreator, updateNewMessageActionCreator, updateNewPostActionCreator } from '../../Redux/state';
+import { addNewPostActionCreator, updateNewPostActionCreator } from '../../Redux/reducer/profileReducer';
 import styles from './Posts.module.css';
 
 const Post = (props) => {
@@ -31,7 +32,7 @@ const Posts = (props) => {
   return (
     <div className={styles.container}>
       My post
-      {props.posts.map((post) => <Post post={post}/>)}
+      {props.posts.map((post) => <Post key={uniqueId()} post={post}/>)}
       <textarea onChange={updateNewPost} value={props.newPost} ref={newPostElement}></textarea>
       <button onClick={createNewPost}>Add new Post</button>
       

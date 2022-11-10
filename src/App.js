@@ -23,7 +23,7 @@ const App = (props) => {
               path='/profile'
               element={
                 <Profile
-                  postsPage={props.store.getPostsPage()}
+                  postsPage={props.store.getState().postsPage}
                   dispatch={props.dispatch}
                 />
               }
@@ -32,12 +32,12 @@ const App = (props) => {
               path='/dialogs'
               element={
                 <Dialogs
-                  dialogsPage={props.store.getDialogsPage()}
+                  dialogsPage={props.store.getState().dialogsPage}
                   dispatch={props.dispatch}
                 />
               }
             />
-            <Route path='/news' element={<News />} />
+            <Route path='/news' element={<News newsPage={props.store.getState().newsPage} dispatch={props.dispatch}/>} />
             <Route path='/music' element={<Music />} />
             <Route path='/setting' element={<Setting />} />
           </Routes>

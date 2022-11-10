@@ -1,7 +1,6 @@
-const ADD_NEW_POST = 'ADD_NEW_POST';
-const UPDATE_NEW_POST = 'UPDATE_NEW_POST';
-const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE_NEW_MESSAGE';
+import dialogsReducer from "./reducer/dialogsReducer";
+import newsReducer from "./reducer/newsReducer";
+import profileReducer from "./reducer/profileReducer";
 
 let alertSubscribed = () => {
   console.log('State was changed')
@@ -68,64 +67,31 @@ const store = {
         { id: 3, name: 'Third' },
       ],
     },
-  },
-    _updateNewMessage(text) {
-    this.getDialogsPage().newMessage = text;
-    alertSubscribed(store);
-  },
-  _addNewMessage() {
-    const newMessage = {
-      id: 10,
-      message: this.getDialogsPage().newMessage,
-    };
-    this.getDialogsPage().dialogs.push(newMessage);
-    this.getDialogsPage().newMessage = '';
-    alertSubscribed(store);
-  },
-  _updateNewPost(text) {
-    this.getPostsPage().newPost = text;
-    alertSubscribed(store);
-  },
-  _addNewPost() {
-    const newPost = {
-      id: 10,
-      likes: 0,
-      content: this.getPostsPage().newPost,
-    };
-    this.getPostsPage().posts.push(newPost);
-    this.getPostsPage().newPost = '';
-    alertSubscribed(store);    
+    newsPage: {
+      news: [
+        {id:1, body: 'Today is good weather'},
+        {id:2, body: 'Cats are beautiful'},
+        {id:3, body: 'Youm youm youm'},
+      ],
+      newNews: 'Write me',
+    },
   },
   getSidebar() {
     return this._state.sidebar;
   },
-  getDialogsPage() {
-    return this._state.dialogsPage;
+  getState() {
+    return this._state
   },
-  getPostsPage() {
-    return this._state.postsPage;
-  },
-
   subscribe(observer) {
     alertSubscribed = observer;
   },
   dispatch(action) {
-    if (action.type === ADD_NEW_POST) {
-      this._addNewPost();
-    } else if (action.type === UPDATE_NEW_POST) {
-      this._updateNewPost(action.text);
-    } else if (action.type === ADD_NEW_MESSAGE) {
-      this._addNewMessage();
-    } else if (action.type === UPDATE_NEW_MESSAGE) {
-      this._updateNewMessage(action.text);
-    }
+    this._state.postsPage = profileReducer(this._state.postsPage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._state.newsPage = newsReducer(this._state.newsPage, action)
+    alertSubscribed(store);    
   },
 }
-
-export const addNewPostActionCreator = () => ({type: ADD_NEW_POST})
-export const updateNewPostActionCreator = (newText) => ({type: UPDATE_NEW_POST, text: newText})
-export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE})
-export const updateNewMessageActionCreator = (newText) => ({type: UPDATE_NEW_MESSAGE, text: newText})
 
 window.store = store;
 
