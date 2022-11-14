@@ -15,7 +15,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className='container'>
         <Header />
-        <Sidebar sidebar={props.store.getSidebar()} />
+        <Sidebar sidebar={props.store.getState().sidebar} />
         <Body />
         <div className='content_container'>
           <Routes>
