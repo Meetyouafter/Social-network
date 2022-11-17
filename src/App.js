@@ -3,41 +3,35 @@ import './App.css';
 import Body from './Components/Content/Profile';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
-import Sidebar from './Components/Sidebar/Sidebar';
-import Dialogs from './Components/Content/Dialogs/Dialogs';
 import Setting from './Components/Content/Setting/Setting';
-import News from './Components/Content/News/News';
 import Profile from './Components/Content/Profile';
 import Music from './Components/Content/Music/Music';
+import SidebarContainer from './Components/Sidebar/SidebarContainer';
+import NewsContainer from './Components/Content/News/NewsContainer';
+import DialogsContainer from './Components/Content/Dialogs/DialogsContainer';
 
-const App = (props) => {
+const App = ({store}) => {
   return (
     <BrowserRouter>
       <div className='container'>
         <Header />
-        <Sidebar sidebar={props.store.getState().sidebar} />
+        <SidebarContainer store={store} />
         <Body />
         <div className='content_container'>
           <Routes>
             <Route
               path='/profile'
               element={
-                <Profile
-                  postsPage={props.store.getState().postsPage}
-                  dispatch={props.dispatch}
-                />
+                <Profile store={store} />
               }
             />
             <Route
               path='/dialogs'
               element={
-                <Dialogs
-                  dialogsPage={props.store.getState().dialogsPage}
-                  dispatch={props.dispatch}
-                />
+                <DialogsContainer store={store} />
               }
             />
-            <Route path='/news' element={<News newsPage={props.store.getState().newsPage} dispatch={props.dispatch}/>} />
+            <Route path='/news' element={<NewsContainer store={store}/>} />
             <Route path='/music' element={<Music />} />
             <Route path='/setting' element={<Setting />} />
           </Routes>

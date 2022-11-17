@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import styles from './Profile.module.css';
-import Posts from './Posts/Posts';
+import PostsContainer from './Posts/PostsContainer';
 
 const UserInfo = () => {
   return (
@@ -12,8 +12,8 @@ const UserInfo = () => {
   );
 };
 
-const Profile = (props) => {
-if (!props.postsPage) {
+const Profile = ({store}) => {
+if (!store) {
   return
 }
 
@@ -24,10 +24,10 @@ if (!props.postsPage) {
         My post
         <div>New Post</div>
         <div>
-          <Posts 
-          posts={props.postsPage.posts}
-          newPost={props.postsPage.newPost}
-          dispatch={props.dispatch}
+          <PostsContainer 
+          posts={store.getState().postsPage.posts}
+          newPost={store.getState().postsPage.newPost}
+          dispatch={store.dispatch}
 />
         </div>
       </div>

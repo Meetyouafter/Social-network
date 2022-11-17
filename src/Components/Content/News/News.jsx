@@ -1,29 +1,18 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { uniqueId } from 'lodash';
 import React from 'react';
-import {
-  addNewNewsActionCreator,
-  updateNewNewsActionCreator,
-} from '../../Redux/reducer/newsReducer';
 import styles from './News.module.css';
 
-const News = (props) => {
-  console.log(props);
-  console.log(props.newsPage.news);
-
-  const handleClick = () => {
-    props.dispatch(addNewNewsActionCreator());
-  };
-
+const News = ({ onClick, updateNews, newNews, news }) => {
   const changeNews = (e) => {
     let text = e.target.value;
-    props.dispatch(updateNewNewsActionCreator(text));
+    updateNews(text);
   };
 
   return (
     <div className={styles.container}>
       News
-      {props.newsPage.news.map((item) => {
+      {news.map((item) => {
         return (
           <div key={uniqueId()}>
             <img
@@ -35,8 +24,8 @@ const News = (props) => {
         );
       })}
       <div>
-        <textarea onChange={changeNews} value={props.newsPage.newNews} />
-        <button onClick={handleClick}>Add news</button>
+        <textarea onChange={changeNews} value={newNews} />
+        <button onClick={onClick}>Add news</button>
       </div>
     </div>
   );

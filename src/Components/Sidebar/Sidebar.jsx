@@ -3,9 +3,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 
-const changeActiveClass = ({ isActive }) => (isActive ? styles.active : '')
+const changeActiveClass = ({ isActive }) => (isActive ? styles.active : '');
 
-const Sidebar = (props) => {
+const Sidebar = ({ sidebar }) => {
   return (
     <nav className={styles.sidebar}>
       <div>
@@ -38,13 +38,19 @@ const Sidebar = (props) => {
           Setting
         </NavLink>
       </div>
-    {props.sidebar.friends.map((friend) => {
-    return <div key={friend.id} className={styles.friends}>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSnsq7RuoVd3kidDzeFLnPFABR_z8Qu9hMDg&usqp=CAU" alt="img" />
-      {friend.name}
-      </div>})}
+      {sidebar.friends.map((friend) => {
+        return (
+          <div key={friend.id} className={styles.friends}>
+            <img
+              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSnsq7RuoVd3kidDzeFLnPFABR_z8Qu9hMDg&usqp=CAU'
+              alt='img'
+            />
+            {friend.name}
+          </div>
+        );
+      })}
     </nav>
-    );
+  );
 };
 
 export default Sidebar;
