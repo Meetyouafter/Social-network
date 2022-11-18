@@ -3,24 +3,30 @@ import {
   addNewPostActionCreator,
   updateNewPostActionCreator,
 } from '../../Redux/reducer/profileReducer';
+import StoreContext from '../../Redux/StoreContext';
 import Posts from './Posts';
 
-const PostsContainer = ({ posts, newPost, dispatch }) => {
-  const createNewPost = () => {
-    dispatch(addNewPostActionCreator());
-  };
-
-  const updateNewPost = (text) => {
-    dispatch(updateNewPostActionCreator(text));
-  };
-
+const PostsContainer = () => {
   return (
-    <Posts
-      addNewPost={createNewPost}
-      updNewPost={updateNewPost}
-      posts={posts}
-      newPost={newPost}
-    />
+    <StoreContext>
+      {(store) => {
+        const createNewPost = () => {
+          store.dispatch(addNewPostActionCreator());
+        };
+
+        const updateNewPost = (text) => {
+          store.dispatch(updateNewPostActionCreator(text));
+        };
+        return (
+          <Posts
+            addNewPost={createNewPost}
+            updNewPost={updateNewPost}
+            posts={store.getState().postsPage.posts}
+            newPost={store.getState().postsPage.newPost}
+          />
+        );
+      }}
+    </StoreContext>
   );
 };
 

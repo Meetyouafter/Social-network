@@ -15,20 +15,20 @@ const App = ({store}) => {
     <BrowserRouter>
       <div className='container'>
         <Header />
-        <SidebarContainer store={store} />
+        <SidebarContainer />
         <Body />
         <div className='content_container'>
           <Routes>
             <Route
               path='/profile'
               element={
-                <Profile store={store} />
+                <Profile />
               }
             />
             <Route
               path='/dialogs'
               element={
-                <DialogsContainer store={store} />
+                <DialogsContainer />
               }
             />
             <Route path='/news' element={<NewsContainer store={store}/>} />

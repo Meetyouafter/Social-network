@@ -12,11 +12,7 @@ const UserInfo = () => {
   );
 };
 
-const Profile = ({store}) => {
-if (!store) {
-  return
-}
-
+const Profile = () => {
   return (
     <main className={styles.body}>
       <UserInfo />
@@ -24,11 +20,7 @@ if (!store) {
         My post
         <div>New Post</div>
         <div>
-          <PostsContainer 
-          posts={store.getState().postsPage.posts}
-          newPost={store.getState().postsPage.newPost}
-          dispatch={store.dispatch}
-/>
+          <PostsContainer />
         </div>
       </div>
     </main>
